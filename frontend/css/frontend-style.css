@@ -1,0 +1,874 @@
+/**
+ * Travel-Z Visa Frontend Stylesheet
+ * Brand colors: Teal (#0ebac5) and Orange (#f26522)
+ */
+
+:root {
+    --travelz-primary: #0ebac5;
+    --travelz-primary-dark: #0aa2ac;
+    --travelz-accent: #f26522;
+    --travelz-accent-dark: #d65213;
+    --travelz-text-dark: #1e293b;
+    --travelz-text-muted: #64748b;
+    --travelz-bg-light: #f8fafc;
+    --travelz-border: #e2e8f0;
+    --travelz-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+    --travelz-radius: 10px;
+}
+
+.travelz-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* =========================================================
+   1. Single Visa Page Hero & Header
+   ========================================================= */
+.travelz-visa-single-page {
+    background-color: #fbfcfd;
+    padding-bottom: 60px;
+}
+
+.travelz-single-hero {
+    background: linear-gradient(135deg, rgba(14, 186, 197, 0.08) 0%, rgba(242, 101, 34, 0.05) 100%), #ffffff;
+    border-bottom: 1px solid var(--travelz-border);
+    padding: 35px 0 25px;
+    margin-bottom: 30px;
+}
+
+.travelz-hero-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.travelz-hero-title-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.travelz-hero-flag {
+    width: 44px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.travelz-hero-heading {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--travelz-text-dark);
+    letter-spacing: -0.5px;
+}
+
+.travelz-breadcrumbs {
+    font-size: 14px;
+    color: var(--travelz-text-muted);
+}
+
+.travelz-breadcrumbs a {
+    color: var(--travelz-primary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.travelz-breadcrumbs a:hover {
+    color: var(--travelz-accent);
+}
+
+.travelz-bc-sep {
+    margin: 0 6px;
+    color: #cbd5e1;
+}
+
+.travelz-bc-current {
+    color: var(--travelz-text-dark);
+    font-weight: 600;
+}
+
+/* =========================================================
+   2. Top Country Switcher / Quick Search
+   ========================================================= */
+.travelz-top-switcher-container {
+    background: #ffffff;
+    border: 1px solid var(--travelz-border);
+    border-radius: var(--travelz-radius);
+    padding: 12px 18px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.travelz-switcher-inner {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.travelz-country-select {
+    padding: 10px 16px;
+    border: 1px solid var(--travelz-border);
+    border-radius: 6px;
+    font-size: 15px;
+    color: var(--travelz-text-dark);
+    background-color: #ffffff;
+    min-width: 220px;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.travelz-country-select:focus {
+    border-color: var(--travelz-primary);
+}
+
+.travelz-instant-search-wrap {
+    position: relative;
+    display: flex;
+    gap: 8px;
+    flex: 1;
+    max-width: 480px;
+}
+
+.travelz-quick-search-input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--travelz-border);
+    border-radius: 6px;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.travelz-quick-search-input:focus {
+    border-color: var(--travelz-primary);
+}
+
+.travelz-switcher-btn {
+    background: var(--travelz-primary);
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 22px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.travelz-switcher-btn:hover {
+    background: var(--travelz-primary-dark);
+}
+
+.travelz-quick-dropdown-results {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    border: 1px solid var(--travelz-border);
+    border-radius: 6px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    max-height: 280px;
+    overflow-y: auto;
+    z-index: 100;
+}
+
+.travelz-quick-dropdown-results ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.travelz-quick-dropdown-results li {
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 14px;
+    transition: background 0.15s;
+}
+
+.travelz-quick-dropdown-results li:hover {
+    background: #f8fafc;
+}
+
+.travelz-quick-dropdown-results img {
+    width: 24px;
+    height: 16px;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+/* =========================================================
+   3. Core 2-Column Detail Grid
+   ========================================================= */
+.travelz-detail-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 30px;
+    align-items: start;
+    margin-bottom: 40px;
+}
+
+@media (max-width: 960px) {
+    .travelz-detail-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Overview Card (Right Side) */
+.travelz-overview-card {
+    background: #ffffff;
+    border: 1px solid var(--travelz-border);
+    border-radius: var(--travelz-radius);
+    padding: 28px 24px;
+    box-shadow: var(--travelz-shadow);
+}
+
+.travelz-overview-header {
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 12px;
+}
+
+.travelz-overview-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--travelz-text-dark);
+}
+
+.travelz-overview-row {
+    margin-bottom: 16px;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.travelz-row-label {
+    font-weight: 700;
+    color: #1e293b;
+    margin-right: 6px;
+}
+
+.travelz-row-value {
+    color: #334155;
+}
+
+.travelz-fees-row {
+    margin-top: 14px;
+    padding: 14px 16px;
+    background: #f8fafc;
+    border-radius: 8px;
+    border-left: 3px solid var(--travelz-accent);
+}
+
+.travelz-fees-row .travelz-row-label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.travelz-fees-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.travelz-fee-item {
+    font-size: 14px;
+    color: #334155;
+}
+
+.travelz-fee-amount {
+    font-weight: 700;
+    color: var(--travelz-accent);
+    margin-right: 4px;
+}
+
+.travelz-fee-label {
+    color: #475569;
+    font-weight: 500;
+}
+
+.travelz-fee-note {
+    color: #64748b;
+    margin-left: 4px;
+}
+
+/* Actions Section */
+.travelz-overview-actions {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.travelz-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 13px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.travelz-btn-query {
+    background: var(--travelz-primary);
+    color: #ffffff !important;
+}
+
+.travelz-btn-query:hover {
+    background: var(--travelz-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(14, 186, 197, 0.3);
+}
+
+.travelz-btn-whatsapp {
+    background: #25d366;
+    color: #ffffff !important;
+}
+
+.travelz-btn-whatsapp:hover {
+    background: #20bd5a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.travelz-btn-phone {
+    background: #ffffff;
+    color: #334155 !important;
+    border: 1px solid #cbd5e1;
+}
+
+.travelz-btn-phone:hover {
+    background: #f8fafc;
+    border-color: #94a3b8;
+}
+
+/* Post Content Card (if present) */
+.travelz-post-content-card {
+    background: #ffffff;
+    border: 1px solid var(--travelz-border);
+    border-radius: var(--travelz-radius);
+    padding: 24px;
+    margin-bottom: 30px;
+    box-shadow: var(--travelz-shadow);
+}
+
+/* =========================================================
+   4. Structured Checklist Section
+   ========================================================= */
+.travelz-checklist-section,
+.travelz-faqs-section {
+    background: #ffffff;
+    border: 1px solid var(--travelz-border);
+    border-radius: var(--travelz-radius);
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: var(--travelz-shadow);
+}
+
+.travelz-section-title-wrap {
+    margin-bottom: 22px;
+}
+
+.travelz-section-title {
+    margin: 0 0 6px;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--travelz-text-dark);
+}
+
+.travelz-section-desc {
+    margin: 0;
+    font-size: 14px;
+    color: var(--travelz-text-muted);
+}
+
+.travelz-tabs-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+}
+
+.travelz-tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    background: #f1f5f9;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.travelz-tab-btn:hover {
+    background: #e2e8f0;
+    color: #1e293b;
+}
+
+.travelz-tab-btn.active {
+    background: var(--travelz-primary);
+    color: #ffffff;
+    border-color: var(--travelz-primary-dark);
+}
+
+.travelz-tab-pane {
+    display: none;
+}
+
+.travelz-tab-pane.active {
+    display: block;
+    animation: travelzFadeIn 0.3s ease;
+}
+
+@keyframes travelzFadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.travelz-checklist-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.travelz-checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 14px;
+    background: #f8fafc;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #334155;
+    line-height: 1.5;
+}
+
+.travelz-check-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    background: rgba(14, 186, 197, 0.15);
+    color: var(--travelz-primary);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+/* =========================================================
+   5. FAQs Accordion
+   ========================================================= */
+.travelz-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.travelz-accordion-item {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+}
+
+.travelz-accordion-item.open {
+    border-color: var(--travelz-primary);
+}
+
+.travelz-accordion-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: #ffffff;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--travelz-text-dark);
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.travelz-accordion-header:hover {
+    background: #f8fafc;
+}
+
+.travelz-accordion-arrow {
+    display: flex;
+    align-items: center;
+    transition: transform 0.25s ease;
+    color: #94a3b8;
+}
+
+.travelz-accordion-item.open .travelz-accordion-arrow {
+    transform: rotate(180deg);
+    color: var(--travelz-primary);
+}
+
+.travelz-accordion-body {
+    padding: 0 20px 16px;
+    background: #ffffff;
+    color: #475569;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.travelz-accordion-content p {
+    margin: 0;
+}
+
+/* =========================================================
+   6. Visa Hub / Archive Page
+   ========================================================= */
+.travelz-visa-hub-page {
+    background-color: #fbfcfd;
+    padding-bottom: 70px;
+}
+
+.travelz-hub-hero {
+    background: linear-gradient(135deg, rgba(14, 186, 197, 0.1) 0%, rgba(242, 101, 34, 0.08) 100%), #ffffff;
+    border-bottom: 1px solid var(--travelz-border);
+    padding: 60px 0 50px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.travelz-hub-hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.travelz-hub-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(14, 186, 197, 0.12);
+    color: var(--travelz-primary-dark);
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+
+.travelz-hub-title {
+    font-size: 34px;
+    font-weight: 800;
+    color: var(--travelz-text-dark);
+    line-height: 1.3;
+    margin: 0 0 16px;
+}
+
+.travelz-hub-desc {
+    font-size: 16px;
+    color: var(--travelz-text-muted);
+    line-height: 1.6;
+    margin: 0 auto 30px;
+}
+
+.travelz-hub-search-bar {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border: 2px solid var(--travelz-primary);
+    border-radius: 50px;
+    padding: 6px 8px 6px 20px;
+    box-shadow: 0 8px 25px rgba(14, 186, 197, 0.15);
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+.travelz-hub-search-icon {
+    color: var(--travelz-primary);
+    margin-right: 12px;
+    display: flex;
+}
+
+.travelz-hub-search-input {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 16px;
+    color: var(--travelz-text-dark);
+    background: transparent;
+}
+
+.travelz-hub-search-btn {
+    background: var(--travelz-primary);
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 26px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.travelz-hub-search-btn:hover {
+    background: var(--travelz-primary-dark);
+}
+
+/* Region Filter Pills */
+.travelz-region-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 35px;
+}
+
+.travelz-region-btn {
+    padding: 8px 20px;
+    background: #ffffff;
+    border: 1px solid var(--travelz-border);
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.travelz-region-btn:hover {
+    border-color: var(--travelz-primary);
+    color: var(--travelz-primary);
+}
+
+.travelz-region-btn.active {
+    background: var(--travelz-primary);
+    border-color: var(--travelz-primary);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(14, 186, 197, 0.25);
+}
+
+/* Country Cards Grid */
+.travelz-countries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.travelz-country-card {
+    background: #ffffff;
+    border: 1px solid var(--travelz-border);
+    border-radius: var(--travelz-radius);
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.travelz-country-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.travelz-card-flag-wrap {
+    position: relative;
+    height: 130px;
+    background: #f1f5f9;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.travelz-card-flag {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.95);
+    transition: transform 0.4s ease;
+}
+
+.travelz-country-card:hover .travelz-card-flag {
+    transform: scale(1.05);
+}
+
+.travelz-card-type-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(4px);
+    color: #ffffff;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.travelz-card-content {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.travelz-card-title {
+    margin: 0 0 12px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.travelz-card-title a {
+    color: var(--travelz-text-dark);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.travelz-card-title a:hover {
+    color: var(--travelz-primary);
+}
+
+.travelz-card-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 18px;
+    font-size: 13px;
+    color: #64748b;
+}
+
+.travelz-card-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.travelz-card-footer {
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid #f1f5f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.travelz-price-label {
+    display: block;
+    font-size: 11px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.travelz-price-val {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--travelz-accent);
+}
+
+.travelz-card-view-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 14px;
+    background: rgba(14, 186, 197, 0.1);
+    color: var(--travelz-primary);
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.travelz-card-view-btn:hover {
+    background: var(--travelz-primary);
+    color: #ffffff;
+}
+
+/* Helpline Banner */
+.travelz-help-banner {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border-radius: var(--travelz-radius);
+    padding: 35px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    color: #ffffff;
+}
+
+.travelz-help-content h3 {
+    margin: 0 0 6px;
+    font-size: 22px;
+    color: #ffffff;
+}
+
+.travelz-help-content p {
+    margin: 0;
+    font-size: 14px;
+    color: #cbd5e1;
+}
+
+.travelz-help-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.travelz-help-btn-primary {
+    background: var(--travelz-accent);
+    color: #ffffff !important;
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.travelz-help-btn-primary:hover {
+    background: var(--travelz-accent-dark);
+}
+
+.travelz-help-btn-call {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.1);
+    color: #ffffff !important;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: background 0.2s;
+}
+
+.travelz-help-btn-call:hover {
+    background: rgba(255,255,255,0.2);
+}
