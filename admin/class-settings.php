@@ -64,6 +64,8 @@ class TravelZ_Visa_Settings {
             'currency_symbol'    => 'BDT',
             'primary_color'      => '#0ebac5',
             'accent_color'       => '#f26522',
+            'hero_bg_image'      => '',
+            'hero_overlay'       => 'light',
             'enable_schema'      => '1',
             'flipbook_sound'     => '1',
             'default_view_mode'  => 'flipbook',
@@ -97,6 +99,8 @@ class TravelZ_Visa_Settings {
         $clean['currency_symbol']   = isset( $input['currency_symbol'] ) ? sanitize_text_field( $input['currency_symbol'] ) : 'BDT';
         $clean['primary_color']     = isset( $input['primary_color'] ) ? sanitize_hex_color( $input['primary_color'] ) : '#0ebac5';
         $clean['accent_color']      = isset( $input['accent_color'] ) ? sanitize_hex_color( $input['accent_color'] ) : '#f26522';
+        $clean['hero_bg_image']     = isset( $input['hero_bg_image'] ) ? esc_url_raw( $input['hero_bg_image'] ) : '';
+        $clean['hero_overlay']      = isset( $input['hero_overlay'] ) ? sanitize_key( $input['hero_overlay'] ) : 'light';
         $clean['enable_schema']     = isset( $input['enable_schema'] ) ? '1' : '0';
         $clean['flipbook_sound']    = isset( $input['flipbook_sound'] ) ? '1' : '0';
         $clean['default_view_mode'] = isset( $input['default_view_mode'] ) ? sanitize_key( $input['default_view_mode'] ) : 'flipbook';
@@ -226,6 +230,43 @@ class TravelZ_Visa_Settings {
                                                 <input type="color" id="travelz_accent_color" name="<?php echo esc_attr( self::OPTION_KEY ); ?>[accent_color]" value="<?php echo esc_attr( $settings['accent_color'] ); ?>" />
                                             </div>
                                         </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><label for="travelz_hero_bg_image"><?php esc_html_e( 'Hero Background Image', 'travel-z-visa' ); ?></label></th>
+                                    <td>
+                                        <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
+                                            <div id="travelz-hero-bg-preview" style="width: 140px; height: 80px; border: 1px solid #cbd5e1; border-radius: 6px; background: #f8fafc; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                                                <?php if ( ! empty( $settings['hero_bg_image'] ) ) : ?>
+                                                    <img src="<?php echo esc_url( $settings['hero_bg_image'] ); ?>" style="width: 100%; height: 100%; object-fit: cover;" alt="" />
+                                                <?php else : ?>
+                                                    <span style="font-size: 11px; color: #94a3b8; text-align: center; padding: 4px;"><?php esc_html_e( 'Default (Clean White)', 'travel-z-visa' ); ?></span>
+                                                <?php endif; ?>
+                                            </div>
+                                            <div>
+                                                <input type="text" id="travelz_hero_bg_image" name="<?php echo esc_attr( self::OPTION_KEY ); ?>[hero_bg_image]" value="<?php echo esc_url( $settings['hero_bg_image'] ); ?>" class="regular-text" placeholder="https://..." />
+                                                <div style="margin-top: 8px; display: flex; gap: 8px;">
+                                                    <button type="button" class="button button-secondary" id="travelz_upload_hero_bg_btn">
+                                                        <span class="dashicons dashicons-upload" style="vertical-align: middle;"></span> <?php esc_html_e( 'Select / Upload Image', 'travel-z-visa' ); ?>
+                                                    </button>
+                                                    <button type="button" class="button button-link-delete" id="travelz_remove_hero_bg_btn" style="<?php echo empty( $settings['hero_bg_image'] ) ? 'display: none;' : ''; ?>">
+                                                        <?php esc_html_e( 'Remove Image', 'travel-z-visa' ); ?>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p class="description"><?php esc_html_e( 'Leave empty to keep the default clean white hero background. If an image is selected, it will be displayed behind the hero banner on the Visa Assistance page.', 'travel-z-visa' ); ?></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><label for="travelz_hero_overlay"><?php esc_html_e( 'Hero Overlay Style', 'travel-z-visa' ); ?></label></th>
+                                    <td>
+                                        <select id="travelz_hero_overlay" name="<?php echo esc_attr( self::OPTION_KEY ); ?>[hero_overlay]">
+                                            <option value="light" <?php selected( $settings['hero_overlay'], 'light' ); ?>><?php esc_html_e( 'Soft White Overlay (Keeps text clean & readable - Recommended)', 'travel-z-visa' ); ?></option>
+                                            <option value="dark" <?php selected( $settings['hero_overlay'], 'dark' ); ?>><?php esc_html_e( 'Dark Overlay (Modern cinematic style)', 'travel-z-visa' ); ?></option>
+                                            <option value="none" <?php selected( $settings['hero_overlay'], 'none' ); ?>><?php esc_html_e( 'Subtle / Natural (Original image)', 'travel-z-visa' ); ?></option>
+                                        </select>
+                                        <p class="description"><?php esc_html_e( 'Controls the background blend over the image.', 'travel-z-visa' ); ?></p>
                                     </td>
                                 </tr>
                                 <tr>

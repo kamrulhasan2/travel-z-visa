@@ -26,13 +26,35 @@ $regions = get_terms( array(
     'hide_empty' => true,
 ) );
 
-$settings = TravelZ_Visa_Settings::get_settings();
+$settings      = TravelZ_Visa_Settings::get_settings();
+$hero_bg_image = ! empty( $settings['hero_bg_image'] ) ? $settings['hero_bg_image'] : '';
+$hero_overlay  = ! empty( $settings['hero_overlay'] ) ? $settings['hero_overlay'] : 'light';
+
+$hero_classes = array( 'travelz-hub-hero' );
+$hero_styles  = array();
+
+if ( ! empty( $hero_bg_image ) ) {
+    $hero_classes[] = 'has-bg-image';
+    $hero_classes[] = 'overlay-' . $hero_overlay;
+
+    if ( 'dark' === $hero_overlay ) {
+        $hero_styles[] = 'background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.80), rgba(15, 23, 42, 0.68)), url(' . esc_url( $hero_bg_image ) . ');';
+    } elseif ( 'none' === $hero_overlay ) {
+        $hero_styles[] = 'background-image: url(' . esc_url( $hero_bg_image ) . ');';
+    } else {
+        // Soft white overlay (keeps white clean aesthetic while showing the photo)
+        $hero_styles[] = 'background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.90), rgba(255, 255, 255, 0.80)), url(' . esc_url( $hero_bg_image ) . ');';
+    }
+    $hero_styles[] = 'background-position: center center;';
+    $hero_styles[] = 'background-size: cover;';
+    $hero_styles[] = 'background-repeat: no-repeat;';
+}
 ?>
 
 <div class="travelz-visa-hub-page">
     
     <!-- Hero Banner -->
-    <div class="travelz-hub-hero">
+    <div class="<?php echo esc_attr( implode( ' ', $hero_classes ) ); ?>" style="<?php echo esc_attr( implode( ' ', $hero_styles ) ); ?>">
         <div class="travelz-container">
             <div class="travelz-hub-hero-content">
                 <span class="travelz-hub-badge"><?php esc_html_e( 'Travel-Z Visa Services', 'travel-z-visa' ); ?></span>

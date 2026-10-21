@@ -560,6 +560,25 @@
     padding: 60px 0 50px;
     text-align: center;
     margin-bottom: 40px;
+    position: relative;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    transition: background 0.3s ease;
+}
+
+.travelz-hub-hero.has-bg-image.overlay-dark .travelz-hub-title {
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.travelz-hub-hero.has-bg-image.overlay-dark .travelz-hub-desc {
+    color: #e2e8f0;
+}
+
+.travelz-hub-hero.has-bg-image.overlay-dark .travelz-hub-badge {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
 }
 
 .travelz-hub-hero-content {

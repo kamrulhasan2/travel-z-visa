@@ -50,6 +50,37 @@
             imgFrame.open();
         });
 
+        // 2b. WP Media Uploader for Hero Background Image (Settings Page)
+        $('#travelz_upload_hero_bg_btn').on('click', function(e) {
+            e.preventDefault();
+            var heroFrame = wp.media({
+                title: 'Select or Upload Hero Background Image',
+                button: {
+                    text: 'Use as Hero Background'
+                },
+                multiple: false,
+                library: {
+                    type: 'image'
+                }
+            });
+
+            heroFrame.on('select', function() {
+                var attachment = heroFrame.state().get('selection').first().toJSON();
+                $('#travelz_hero_bg_image').val(attachment.url);
+                $('#travelz-hero-bg-preview').html('<img src="' + attachment.url + '" style="width: 100%; height: 100%; object-fit: cover;" alt="" />');
+                $('#travelz_remove_hero_bg_btn').show();
+            });
+
+            heroFrame.open();
+        });
+
+        $('#travelz_remove_hero_bg_btn').on('click', function(e) {
+            e.preventDefault();
+            $('#travelz_hero_bg_image').val('');
+            $('#travelz-hero-bg-preview').html('<span style="font-size: 11px; color: #94a3b8; text-align: center; padding: 4px;">Default (Clean White)</span>');
+            $(this).hide();
+        });
+
         // 3. Visa Fees Table Repeater
         $('#travelz-add-fee-btn').on('click', function(e) {
             e.preventDefault();
