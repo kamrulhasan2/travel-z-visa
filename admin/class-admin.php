@@ -18,6 +18,7 @@ class TravelZ_Visa_Admin {
         add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_assets' ) );
         add_filter( 'manage_' . TravelZ_Visa_Post_Type::POST_TYPE . '_posts_columns', array( __CLASS__, 'manage_columns' ) );
         add_action( 'manage_' . TravelZ_Visa_Post_Type::POST_TYPE . '_posts_custom_column', array( __CLASS__, 'render_columns' ), 10, 2 );
+        add_filter( 'plugin_row_meta', array( __CLASS__, 'customize_plugin_row_meta' ), 10, 4 );
     }
 
     /**
@@ -121,6 +122,21 @@ class TravelZ_Visa_Admin {
                 }
                 break;
         }
+    }
+
+    /**
+     * Customize plugin row meta on Plugins list table.
+     */
+    public static function customize_plugin_row_meta( $plugin_meta, $plugin_file, $plugin_data, $status ) {
+        if ( strpos( $plugin_file, 'travel-z-visa' ) !== false || strpos( $plugin_file, 'travelz-visa' ) !== false ) {
+            $new_meta = array();
+            if ( ! empty( $plugin_data['Version'] ) ) {
+                $new_meta[] = sprintf( __( 'Version %s', 'travel-z-visa' ), $plugin_data['Version'] );
+            }
+            $new_meta[] = __( 'Developed by Kamrul Hasan & Yeasmin', 'travel-z-visa' );
+            return $new_meta;
+        }
+        return $plugin_meta;
     }
 }
 

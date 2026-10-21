@@ -1,11 +1,9 @@
 <?php
 /**
  * Plugin Name: Travel-Z Visa Assistance
- * Plugin URI: https://tech.travelzbd.com/
  * Description: Complete Visa Assistance management system with modern interactive flipbook viewer, SEO schema, dynamic admin control, and quick search hub.
  * Version: 1.0.4
- * Author: Travel-Z / E-GUIDER
- * Author URI: https://tech.travelzbd.com/
+ * Author: Kamrul Hasan & Yeasmin
  * Text Domain: travel-z-visa
  * Domain Path: /languages
  */
@@ -40,3 +38,19 @@ register_activation_hook( __FILE__, array( 'TravelZ_Visa', 'activate' ) );
 
 // Deactivation hook
 register_deactivation_hook( __FILE__, array( 'TravelZ_Visa', 'deactivate' ) );
+
+/**
+ * Filter plugin row meta to show 'Developed by Kamrul Hasan & Yeasmin'.
+ */
+add_filter( 'plugin_row_meta', 'travelz_visa_custom_plugin_row_meta', 10, 4 );
+function travelz_visa_custom_plugin_row_meta( $plugin_meta, $plugin_file, $plugin_data, $status ) {
+    if ( strpos( $plugin_file, 'travel-z-visa.php' ) !== false || strpos( $plugin_file, 'travelz-visa.php' ) !== false ) {
+        $new_meta = array();
+        if ( ! empty( $plugin_data['Version'] ) ) {
+            $new_meta[] = sprintf( 'Version %s', $plugin_data['Version'] );
+        }
+        $new_meta[] = 'Developed by Kamrul Hasan & Yeasmin';
+        return $new_meta;
+    }
+    return $plugin_meta;
+}

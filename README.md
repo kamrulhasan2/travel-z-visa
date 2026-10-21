@@ -459,7 +459,7 @@ add_action( 'travelz_visa_before_flipbook', function( $post_id ) {
 ## 📄 License & Credits
 
 - **License:** GNU General Public License v2 or later ([GPL-2.0-or-later](https://www.gnu.org/licenses/gpl-2.0.html))
-- **Developed by:** Travel-Z & E-GUIDER Tech Team
+- **Developed by:** Kamrul Hasan & Yeasmin
 - **Official Website:** [https://tech.travelzbd.com/](https://tech.travelzbd.com/)
 
 ---
