@@ -27,6 +27,29 @@ class TravelZ_Visa_Post_Type {
     public static function init() {
         add_action( 'init', array( __CLASS__, 'register' ) );
         add_filter( 'post_updated_messages', array( __CLASS__, 'updated_messages' ) );
+        add_filter( 'use_block_editor_for_post_type', array( __CLASS__, 'disable_block_editor' ), 10, 2 );
+        add_filter( 'enter_title_here', array( __CLASS__, 'custom_title_placeholder' ) );
+    }
+
+    /**
+     * Disable Gutenberg block editor for this CPT for an intuitive, non-coder friendly interface.
+     */
+    public static function disable_block_editor( $use_block_editor, $post_type ) {
+        if ( self::POST_TYPE === $post_type ) {
+            return false;
+        }
+        return $use_block_editor;
+    }
+
+    /**
+     * Custom title placeholder for country name.
+     */
+    public static function custom_title_placeholder( $title ) {
+        $screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+        if ( $screen && self::POST_TYPE === $screen->post_type ) {
+            return __( 'Enter Country Name (e.g. China, Canada, Australia, Japan)...', 'travel-z-visa' );
+        }
+        return $title;
     }
 
     /**
@@ -109,8 +132,8 @@ class TravelZ_Visa_Post_Type {
             'hierarchical'       => false,
             'menu_position'      => 25,
             'menu_icon'          => 'dashicons-airplane',
-            'supports'           => array( 'title', 'editor', 'thumbnail', 'excerpt', 'revisions' ),
-            'show_in_rest'       => true,
+            'supports'           => array( 'title' ),
+            'show_in_rest'       => false,
         );
 
         register_post_type( self::POST_TYPE, $args );
