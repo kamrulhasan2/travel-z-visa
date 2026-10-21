@@ -25,6 +25,10 @@ class TravelZ_Visa_Frontend {
 
         // Inject body class for CSS scoping & reliable centering
         add_filter( 'body_class', array( __CLASS__, 'filter_body_classes' ) );
+
+        // AJAX PDF Proxy to bypass CORS issues on cross-domain/local PDF rendering
+        add_action( 'wp_ajax_travelz_pdf_proxy', array( __CLASS__, 'pdf_proxy' ) );
+        add_action( 'wp_ajax_nopriv_travelz_pdf_proxy', array( __CLASS__, 'pdf_proxy' ) );
     }
 
     /**
@@ -176,6 +180,41 @@ class TravelZ_Visa_Frontend {
                 }
             }
         }
+    }
+
+    /**
+     * Safe PDF Proxy to avoid CORS errors when PDF is on a different origin.
+     */
+    public static function pdf_proxy() {
+        $pdf_url = isset( $_GET['pdf'] ) ? esc_url_raw( wp_unslash( $_GET['pdf'] ) ) : '';
+        if ( empty( $pdf_url ) ) {
+            wp_die( 'No PDF specified', 400 );
+        }
+
+        $clean_url = strtok( $pdf_url, '?' );
+        if ( ! preg_match( '/\.pdf$/i', $clean_url ) ) {
+            wp_die( 'Invalid file type', 400 );
+        }
+
+        $response = wp_remote_get( $pdf_url, array(
+            'timeout'   => 25,
+            'sslverify' => false,
+        ) );
+
+        if ( is_wp_error( $response ) || wp_remote_retrieve_response_code( $response ) !== 200 ) {
+            wp_die( 'Unable to load PDF', 502 );
+        }
+
+        $body = wp_remote_retrieve_body( $response );
+
+        header( 'Content-Type: application/pdf' );
+        header( 'Access-Control-Allow-Origin: *' );
+        header( 'Access-Control-Allow-Methods: GET' );
+        header( 'Content-Length: ' . strlen( $body ) );
+        header( 'Cache-Control: public, max-age=86400' );
+
+        echo $body;
+        exit;
     }
 }
 

@@ -267,7 +267,7 @@ class TravelZ_Visa_Settings {
                                                 <input type="text" id="travelz_hero_bg_image" name="<?php echo esc_attr( self::OPTION_KEY ); ?>[hero_bg_image]" value="<?php echo esc_url( $settings['hero_bg_image'] ); ?>" class="regular-text" placeholder="https://..." />
                                                 <div style="margin-top: 8px; display: flex; gap: 8px;">
                                                     <button type="button" class="button button-secondary" id="travelz_upload_hero_bg_btn">
-                                                        <span class="dashicons dashicons-upload" style="vertical-align: middle;"></span> <?php esc_html_e( 'Select / Upload Image', 'travel-z-visa' ); ?>
+                                                        <span class="dashicons dashicons-upload"></span> <?php esc_html_e( 'Select / Upload Image', 'travel-z-visa' ); ?>
                                                     </button>
                                                     <button type="button" class="button button-link-delete" id="travelz_remove_hero_bg_btn" style="<?php echo empty( $settings['hero_bg_image'] ) ? 'display: none;' : ''; ?>">
                                                         <?php esc_html_e( 'Remove Image', 'travel-z-visa' ); ?>
@@ -386,7 +386,7 @@ class TravelZ_Visa_Settings {
                             <?php wp_nonce_field( 'travelz_seed_action', 'travelz_seed_nonce' ); ?>
                             <input type="hidden" name="action" value="travelz_seed_data" />
                             <button type="submit" class="button button-secondary" onclick="return confirm('Do you want to import/refresh the default visa countries?');" style="width: 100%; text-align: center;">
-                                <span class="dashicons dashicons-download" style="vertical-align: middle;"></span> <?php esc_html_e( 'Import / Reset Default Visas', 'travel-z-visa' ); ?>
+                                <span class="dashicons dashicons-download"></span> <?php esc_html_e( 'Import / Reset Default Visas', 'travel-z-visa' ); ?>
                             </button>
                         </form>
                     </div>

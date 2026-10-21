@@ -3,7 +3,7 @@
  * Plugin Name: Travel-Z Visa Assistance
  * Plugin URI: https://tech.travelzbd.com/
  * Description: Complete Visa Assistance management system with modern interactive flipbook viewer, SEO schema, dynamic admin control, and quick search hub.
- * Version: 1.0.1
+ * Version: 1.0.4
  * Author: Travel-Z / E-GUIDER
  * Author URI: https://tech.travelzbd.com/
  * Text Domain: travel-z-visa
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define Plugin Constants
-define( 'TRAVELZ_VISA_VERSION', '1.0.1' );
+define( 'TRAVELZ_VISA_VERSION', '1.0.4' );
 define( 'TRAVELZ_VISA_FILE', __FILE__ );
 define( 'TRAVELZ_VISA_PATH', plugin_dir_path( __FILE__ ) );
 define( 'TRAVELZ_VISA_URL', plugin_dir_url( __FILE__ ) );

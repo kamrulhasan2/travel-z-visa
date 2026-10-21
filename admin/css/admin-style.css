@@ -106,6 +106,7 @@ body.post-type-travelz_visa .postbox .inside {
     border: 1px solid #e2e8f0;
     border-radius: 6px;
     overflow: hidden;
+    width: 100%;
 }
 
 .travelz-fees-table th {
@@ -127,16 +128,145 @@ body.post-type-travelz_visa .postbox .inside {
     padding: 6px 10px;
 }
 
+/* =========================================================
+   Admin Action Buttons & Dashicons Alignment Engine
+   ========================================================= */
+
+/* All primary and secondary buttons in Travel-Z admin */
+.post-type-travelz_visa .button,
+.travelz-settings-wrap .button,
+#travelz-add-fee-btn,
+#travelz-add-faq-btn,
+#travelz_upload_pdf_btn,
+#travelz_upload_flag_btn,
+#travelz_upload_hero_bg_btn,
+.travelz-btn-with-icon {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    height: 34px !important;
+    min-height: 34px !important;
+    padding: 0 14px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+    cursor: pointer !important;
+    vertical-align: middle !important;
+    border-radius: 5px !important;
+    transition: all 0.2s ease !important;
+    box-sizing: border-box !important;
+    flex-shrink: 0 !important;
+}
+
+/* Secondary Action Buttons (Add Fee, Add FAQ, Upload PDF, Upload Hero) */
+#travelz-add-fee-btn,
+#travelz-add-faq-btn,
+#travelz_upload_pdf_btn,
+#travelz_upload_hero_bg_btn {
+    background: #ffffff !important;
+    border: 1px solid #0ebac5 !important;
+    color: #0ebac5 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+}
+
+#travelz-add-fee-btn:hover,
+#travelz-add-faq-btn:hover,
+#travelz_upload_pdf_btn:hover,
+#travelz_upload_hero_bg_btn:hover {
+    background: #0ebac5 !important;
+    border-color: #0aa2ac !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 6px rgba(14, 186, 197, 0.25) !important;
+}
+
+#travelz_upload_flag_btn {
+    padding: 0 10px !important;
+    min-width: 34px !important;
+    width: 34px !important;
+}
+
+/* Ensure all dashicons inside buttons are perfectly centered with text */
+.post-type-travelz_visa .button .dashicons,
+.travelz-settings-wrap .button .dashicons,
+#travelz-add-fee-btn .dashicons,
+#travelz-add-faq-btn .dashicons,
+#travelz_upload_pdf_btn .dashicons,
+#travelz_upload_flag_btn .dashicons,
+#travelz_upload_hero_bg_btn .dashicons {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 18px !important;
+    height: 18px !important;
+    font-size: 18px !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    vertical-align: middle !important;
+    color: inherit !important;
+}
+
+/* Delete / Trash action buttons in repeaters */
 .travelz-remove-fee-btn,
 .travelz-remove-faq-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 30px !important;
+    height: 30px !important;
+    min-height: 30px !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    border: 1px solid #fecaca !important;
+    border-radius: 5px !important;
+    background: #fff5f5 !important;
     color: #ef4444 !important;
-    text-decoration: none;
-    cursor: pointer;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
 }
 
 .travelz-remove-fee-btn:hover,
 .travelz-remove-faq-btn:hover {
-    color: #b91c1c !important;
+    background: #ef4444 !important;
+    border-color: #dc2626 !important;
+    color: #ffffff !important;
+}
+
+.travelz-remove-fee-btn .dashicons,
+.travelz-remove-faq-btn .dashicons {
+    width: 16px !important;
+    height: 16px !important;
+    font-size: 16px !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    color: inherit !important;
+}
+
+/* Row containers for uploaders to prevent squishing */
+.travelz-pdf-uploader-row,
+.travelz-flag-uploader-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin-top: 6px !important;
+    width: 100% !important;
+}
+
+.travelz-pdf-uploader-row input[type="text"],
+.travelz-flag-uploader-row input[type="text"] {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    height: 34px !important;
+    box-sizing: border-box !important;
+}
+
+.travelz-pdf-uploader-row .button,
+.travelz-flag-uploader-row .button {
+    flex-shrink: 0 !important;
+    height: 34px !important;
+    white-space: nowrap !important;
 }
 
 /* Settings Page */

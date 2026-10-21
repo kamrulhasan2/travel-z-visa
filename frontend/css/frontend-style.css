@@ -381,6 +381,16 @@ body.tax-visa_region #secondary {
     margin-bottom: 40px;
 }
 
+.travelz-detail-grid > * {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.travelz-grid-flipbook {
+    min-width: 0;
+    max-width: 100%;
+}
+
 @media (max-width: 960px) {
     .travelz-detail-grid {
         grid-template-columns: 1fr;

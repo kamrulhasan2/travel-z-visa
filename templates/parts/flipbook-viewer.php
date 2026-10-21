@@ -41,6 +41,7 @@ if ( empty( $download_text ) ) {
             <button type="button" class="travelz-fb-btn" id="travelz-fb-zoom-out" title="<?php esc_attr_e( 'Zoom Out (-)', 'travel-z-visa' ); ?>" aria-label="<?php esc_attr_e( 'Zoom Out', 'travel-z-visa' ); ?>">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="stroke: #334155;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
             </button>
+            <span class="travelz-zoom-level-badge" id="travelz-fb-zoom-val" title="<?php esc_attr_e( 'Current Zoom Level', 'travel-z-visa' ); ?>">100%</span>
             <button type="button" class="travelz-fb-btn" id="travelz-fb-zoom-in" title="<?php esc_attr_e( 'Zoom In (+)', 'travel-z-visa' ); ?>" aria-label="<?php esc_attr_e( 'Zoom In', 'travel-z-visa' ); ?>">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="stroke: #334155;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
             </button>
@@ -72,7 +73,9 @@ if ( empty( $download_text ) ) {
                 </div>
 
                 <!-- Fallback Iframe/Embed for instant display & reliability -->
-                <iframe src="<?php echo esc_url( $pdf_url ); ?>#toolbar=0&navpanes=0&scrollbar=0" class="travelz-native-pdf-embed" id="travelz-native-pdf-embed" title="<?php echo esc_attr( $title ); ?>" style="display:none; width: 100%; height: 600px; border: none; border-radius: 8px;"></iframe>
+                <div class="travelz-iframe-zoom-container" id="travelz-iframe-zoom-container" style="display:none; width: 100%; height: 620px; overflow: auto; border-radius: 8px;">
+                    <iframe src="<?php echo esc_url( $pdf_url ); ?>#toolbar=0&navpanes=0&scrollbar=0" class="travelz-native-pdf-embed" id="travelz-native-pdf-embed" title="<?php echo esc_attr( $title ); ?>" style="width: 100%; height: 100%; min-height: 600px; border: none; border-radius: 8px; display: block;"></iframe>
+                </div>
             </div>
         <?php else : ?>
             <div class="travelz-no-pdf-notice">

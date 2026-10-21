@@ -11,6 +11,10 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
 }
 
 /* Toolbar */
@@ -119,6 +123,25 @@ button.travelz-fb-btn:disabled svg,
     line-height: 1.2 !important;
 }
 
+.travelz-zoom-level-badge {
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    color: #334155 !important;
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    padding: 6px 10px !important;
+    border-radius: 7px !important;
+    min-width: 48px !important;
+    text-align: center !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    user-select: none !important;
+    box-sizing: border-box !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+}
+
 .travelz-fb-download-btn,
 a.travelz-fb-download-btn {
     display: inline-flex !important;
@@ -164,30 +187,57 @@ a.travelz-fb-download-btn:hover svg {
     background: #e5e7eb;
     background-image: radial-gradient(#d1d5db 1px, transparent 1px);
     background-size: 16px 16px;
-    min-height: 520px;
+    height: 640px;
+    max-height: 640px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    padding: 20px;
+    align-items: normal;
+    justify-content: normal;
+    overflow: auto !important;
+    padding: 24px;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 768px) {
+    .travelz-flipbook-stage {
+        height: 500px;
+        max-height: 500px;
+        padding: 14px;
+    }
+}
+
+.travelz-flipbook-stage.can-pan {
+    cursor: grab;
+}
+
+.travelz-flipbook-stage.is-dragging {
+    cursor: grabbing !important;
+    user-select: none;
 }
 
 .travelz-book-viewport {
-    width: 100%;
-    max-width: 650px;
-    min-height: 500px;
+    width: max-content;
+    min-width: max-content;
+    height: max-content;
+    min-height: max-content;
     display: flex;
     justify-content: center;
     align-items: center;
     perspective: 1500px;
+    margin: auto;
+    transition: none;
 }
 
 /* Realistic Page Styles */
 .travelz-flipbook-canvas-area {
-    width: 100%;
+    width: max-content;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: auto;
 }
 
 .travelz-page-sheet {
@@ -195,16 +245,40 @@ a.travelz-fb-download-btn:hover svg {
     border-radius: 4px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.18), 0 1px 4px rgba(0,0,0,0.1);
     position: relative;
-    max-width: 100%;
-    transition: transform 0.4s ease, opacity 0.3s ease;
+    max-width: none !important;
+    max-height: none !important;
     border: 1px solid #e7dfd3;
+    display: block;
+    margin: auto;
+    transition: none;
 }
 
 .travelz-page-sheet canvas {
     display: block;
-    max-width: 100%;
-    height: auto;
+    max-width: none !important;
+    max-height: none !important;
     border-radius: 4px;
+}
+
+/* Fallback Iframe Zoom Container */
+.travelz-iframe-zoom-container {
+    width: 100%;
+    min-height: 620px;
+    overflow: auto !important;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    border-radius: 8px;
+    background: #333333;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+}
+
+.travelz-native-pdf-embed {
+    border: none;
+    border-radius: 8px;
+    transition: width 0.25s ease, height 0.25s ease;
+    display: block;
 }
 
 /* Parchment / Vintage Border Accent */
@@ -312,21 +386,34 @@ button.travelz-footer-nav-btn:hover svg {
 
 /* Fullscreen Mode */
 .travelz-flipbook-wrapper.is-fullscreen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 999999;
-    border-radius: 0;
-    margin: 0;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+    z-index: 999999 !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    background: #0f172a !important;
 }
 
 .travelz-flipbook-wrapper.is-fullscreen .travelz-flipbook-stage {
-    flex: 1;
-    min-height: calc(100vh - 60px);
+    flex: 1 1 auto !important;
+    height: calc(100vh - 58px) !important;
+    max-height: calc(100vh - 58px) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background: #1e293b !important;
+    background-image: radial-gradient(#334155 1px, transparent 1px) !important;
 }
 
 .travelz-flipbook-wrapper.is-fullscreen #travelz-native-pdf-embed {
     height: calc(100vh - 120px) !important;
 }
+

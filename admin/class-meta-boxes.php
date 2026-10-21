@@ -178,7 +178,7 @@ class TravelZ_Visa_Meta_Boxes {
 
             <div style="margin-top: 10px;">
                 <button type="button" class="button button-secondary" id="travelz-add-fee-btn">
-                    <span class="dashicons dashicons-plus-alt2" style="vertical-align: middle;"></span> <?php esc_html_e( 'Add Another Fee Tier', 'travel-z-visa' ); ?>
+                    <span class="dashicons dashicons-plus-alt2"></span> <?php esc_html_e( 'Add Another Fee Tier', 'travel-z-visa' ); ?>
                 </button>
             </div>
         </div>
@@ -208,10 +208,10 @@ class TravelZ_Visa_Meta_Boxes {
             <div class="travelz-meta-row">
                 <div class="travelz-col-12">
                     <label for="travelz_visa_pdf_url"><strong><?php esc_html_e( 'Visa Requirement PDF Document', 'travel-z-visa' ); ?>:</strong></label>
-                    <div style="display: flex; gap: 10px; margin-top: 5px;">
+                    <div class="travelz-pdf-uploader-row">
                         <input type="text" id="travelz_visa_pdf_url" name="travelz_visa_pdf_url" value="<?php echo esc_url( $pdf_url ); ?>" class="widefat" placeholder="Upload or enter PDF document URL..." />
                         <button type="button" class="button button-secondary" id="travelz_upload_pdf_btn">
-                            <span class="dashicons dashicons-upload" style="vertical-align: middle;"></span> <?php esc_html_e( 'Select / Upload PDF', 'travel-z-visa' ); ?>
+                            <span class="dashicons dashicons-upload"></span> <?php esc_html_e( 'Select / Upload PDF', 'travel-z-visa' ); ?>
                         </button>
                     </div>
                     <p class="description"><?php esc_html_e( 'Select the PDF file from WordPress Media Library. This document will be rendered inside the interactive flipbook viewer on the frontend.', 'travel-z-visa' ); ?></p>
@@ -320,7 +320,7 @@ class TravelZ_Visa_Meta_Boxes {
         </div>
 
         <button type="button" class="button button-secondary" id="travelz-add-faq-btn">
-            <span class="dashicons dashicons-plus-alt2" style="vertical-align: middle;"></span> <?php esc_html_e( 'Add New FAQ', 'travel-z-visa' ); ?>
+            <span class="dashicons dashicons-plus-alt2"></span> <?php esc_html_e( 'Add New FAQ', 'travel-z-visa' ); ?>
         </button>
         <?php
     }
@@ -335,7 +335,7 @@ class TravelZ_Visa_Meta_Boxes {
         ?>
         <div style="margin-bottom: 12px;">
             <label for="travelz_visa_flag_url"><strong><?php esc_html_e( 'Country Flag URL / Icon', 'travel-z-visa' ); ?>:</strong></label>
-            <div style="display: flex; gap: 6px; margin-top: 4px;">
+            <div class="travelz-flag-uploader-row">
                 <input type="text" id="travelz_visa_flag_url" name="travelz_visa_flag_url" value="<?php echo esc_url( $flag_url ); ?>" class="widefat" placeholder="Flag image URL" />
                 <button type="button" class="button button-secondary" id="travelz_upload_flag_btn"><span class="dashicons dashicons-format-image"></span></button>
             </div>
