@@ -26,28 +26,46 @@ $regions = get_terms( array(
     'hide_empty' => true,
 ) );
 
-$settings      = TravelZ_Visa_Settings::get_settings();
-$hero_bg_image = ! empty( $settings['hero_bg_image'] ) ? $settings['hero_bg_image'] : '';
-$hero_overlay  = ! empty( $settings['hero_overlay'] ) ? $settings['hero_overlay'] : 'light';
+$settings             = TravelZ_Visa_Settings::get_settings();
+$hero_bg_image        = ! empty( $settings['hero_bg_image'] ) ? $settings['hero_bg_image'] : '';
+$hero_overlay_opacity = isset( $settings['hero_overlay_opacity'] ) ? floatval( $settings['hero_overlay_opacity'] ) : 75;
+$hero_overlay_color   = ! empty( $settings['hero_overlay_color'] ) ? $settings['hero_overlay_color'] : '#ffffff';
 
 $hero_classes = array( 'travelz-hub-hero' );
 $hero_styles  = array();
 
 if ( ! empty( $hero_bg_image ) ) {
     $hero_classes[] = 'has-bg-image';
-    $hero_classes[] = 'overlay-' . $hero_overlay;
 
-    if ( 'dark' === $hero_overlay ) {
-        $hero_styles[] = 'background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.80), rgba(15, 23, 42, 0.68)), url(' . esc_url( $hero_bg_image ) . ');';
-    } elseif ( 'none' === $hero_overlay ) {
-        $hero_styles[] = 'background-image: url(' . esc_url( $hero_bg_image ) . ');';
+    // Convert hex overlay color to RGB
+    $hex = str_replace( '#', '', $hero_overlay_color );
+    if ( strlen( $hex ) === 3 ) {
+        $r = hexdec( substr( $hex, 0, 1 ) . substr( $hex, 0, 1 ) );
+        $g = hexdec( substr( $hex, 1, 1 ) . substr( $hex, 1, 1 ) );
+        $b = hexdec( substr( $hex, 2, 1 ) . substr( $hex, 2, 1 ) );
     } else {
-        // Soft white overlay (keeps white clean aesthetic while showing the photo)
-        $hero_styles[] = 'background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.90), rgba(255, 255, 255, 0.80)), url(' . esc_url( $hero_bg_image ) . ');';
+        $r = hexdec( substr( $hex, 0, 2 ) );
+        $g = hexdec( substr( $hex, 2, 2 ) );
+        $b = hexdec( substr( $hex, 4, 2 ) );
     }
+
+    $alpha1 = max( 0, min( 1, $hero_overlay_opacity / 100 ) );
+    $alpha2 = max( 0, min( 1, $alpha1 - 0.08 ) );
+
+    $hero_styles[] = sprintf(
+        'background-image: linear-gradient(135deg, rgba(%d, %d, %d, %.2f), rgba(%d, %d, %d, %.2f)), url("%s");',
+        $r, $g, $b, $alpha1,
+        $r, $g, $b, $alpha2,
+        esc_url( $hero_bg_image )
+    );
     $hero_styles[] = 'background-position: center center;';
     $hero_styles[] = 'background-size: cover;';
     $hero_styles[] = 'background-repeat: no-repeat;';
+
+    // If overlay is dark, apply dark mode class for text
+    if ( $r < 100 && $g < 100 && $b < 100 && $alpha1 > 0.45 ) {
+        $hero_classes[] = 'overlay-dark';
+    }
 }
 ?>
 

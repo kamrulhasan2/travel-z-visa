@@ -62,11 +62,13 @@ class TravelZ_Visa_Settings {
             'query_url'          => home_url( '/queries/' ),
             'slug_prefix'        => 'visa-assistance',
             'currency_symbol'    => 'BDT',
-            'primary_color'      => '#0ebac5',
-            'accent_color'       => '#f26522',
-            'hero_bg_image'      => '',
-            'hero_overlay'       => 'light',
-            'enable_schema'      => '1',
+            'primary_color'        => '#0ebac5',
+            'accent_color'         => '#f26522',
+            'hero_bg_image'        => '',
+            'hero_overlay'         => 'light',
+            'hero_overlay_opacity' => '75',
+            'hero_overlay_color'   => '#ffffff',
+            'enable_schema'        => '1',
             'flipbook_sound'     => '1',
             'default_view_mode'  => 'flipbook',
         );
@@ -99,9 +101,11 @@ class TravelZ_Visa_Settings {
         $clean['currency_symbol']   = isset( $input['currency_symbol'] ) ? sanitize_text_field( $input['currency_symbol'] ) : 'BDT';
         $clean['primary_color']     = isset( $input['primary_color'] ) ? sanitize_hex_color( $input['primary_color'] ) : '#0ebac5';
         $clean['accent_color']      = isset( $input['accent_color'] ) ? sanitize_hex_color( $input['accent_color'] ) : '#f26522';
-        $clean['hero_bg_image']     = isset( $input['hero_bg_image'] ) ? esc_url_raw( $input['hero_bg_image'] ) : '';
-        $clean['hero_overlay']      = isset( $input['hero_overlay'] ) ? sanitize_key( $input['hero_overlay'] ) : 'light';
-        $clean['enable_schema']     = isset( $input['enable_schema'] ) ? '1' : '0';
+        $clean['hero_bg_image']        = isset( $input['hero_bg_image'] ) ? esc_url_raw( $input['hero_bg_image'] ) : '';
+        $clean['hero_overlay']         = isset( $input['hero_overlay'] ) ? sanitize_key( $input['hero_overlay'] ) : 'light';
+        $clean['hero_overlay_opacity'] = isset( $input['hero_overlay_opacity'] ) ? min( 100, max( 0, intval( $input['hero_overlay_opacity'] ) ) ) : 75;
+        $clean['hero_overlay_color']   = isset( $input['hero_overlay_color'] ) ? sanitize_hex_color( $input['hero_overlay_color'] ) : '#ffffff';
+        $clean['enable_schema']        = isset( $input['enable_schema'] ) ? '1' : '0';
         $clean['flipbook_sound']    = isset( $input['flipbook_sound'] ) ? '1' : '0';
         $clean['default_view_mode'] = isset( $input['default_view_mode'] ) ? sanitize_key( $input['default_view_mode'] ) : 'flipbook';
 
@@ -259,14 +263,21 @@ class TravelZ_Visa_Settings {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th scope="row"><label for="travelz_hero_overlay"><?php esc_html_e( 'Hero Overlay Style', 'travel-z-visa' ); ?></label></th>
+                                    <th scope="row"><label for="travelz_hero_opacity"><?php esc_html_e( 'Hero Overlay Transparency', 'travel-z-visa' ); ?></label></th>
                                     <td>
-                                        <select id="travelz_hero_overlay" name="<?php echo esc_attr( self::OPTION_KEY ); ?>[hero_overlay]">
-                                            <option value="light" <?php selected( $settings['hero_overlay'], 'light' ); ?>><?php esc_html_e( 'Soft White Overlay (Keeps text clean & readable - Recommended)', 'travel-z-visa' ); ?></option>
-                                            <option value="dark" <?php selected( $settings['hero_overlay'], 'dark' ); ?>><?php esc_html_e( 'Dark Overlay (Modern cinematic style)', 'travel-z-visa' ); ?></option>
-                                            <option value="none" <?php selected( $settings['hero_overlay'], 'none' ); ?>><?php esc_html_e( 'Subtle / Natural (Original image)', 'travel-z-visa' ); ?></option>
-                                        </select>
-                                        <p class="description"><?php esc_html_e( 'Controls the background blend over the image.', 'travel-z-visa' ); ?></p>
+                                        <div style="display: flex; align-items: center; gap: 14px;">
+                                            <input type="range" id="travelz_hero_opacity_slider" min="0" max="100" step="5" value="<?php echo esc_attr( $settings['hero_overlay_opacity'] ); ?>" style="width: 200px;" oninput="document.getElementById('travelz_hero_opacity').value = this.value; document.getElementById('travelz_opacity_val').innerText = this.value + '%';" />
+                                            <input type="number" id="travelz_hero_opacity" name="<?php echo esc_attr( self::OPTION_KEY ); ?>[hero_overlay_opacity]" min="0" max="100" step="5" value="<?php echo esc_attr( $settings['hero_overlay_opacity'] ); ?>" style="width: 65px;" oninput="document.getElementById('travelz_hero_opacity_slider').value = this.value; document.getElementById('travelz_opacity_val').innerText = this.value + '%';" />
+                                            <strong id="travelz_opacity_val" style="color: #0ebac5; font-size: 15px;"><?php echo esc_html( $settings['hero_overlay_opacity'] ); ?>%</strong>
+                                        </div>
+                                        <p class="description"><?php esc_html_e( 'Adjust the overlay intensity over the background image (e.g. 60% - 85% is ideal for keeping text clean and readable while showing the background image).', 'travel-z-visa' ); ?></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><label for="travelz_hero_overlay_color"><?php esc_html_e( 'Hero Overlay Tint Color', 'travel-z-visa' ); ?></label></th>
+                                    <td>
+                                        <input type="color" id="travelz_hero_overlay_color" name="<?php echo esc_attr( self::OPTION_KEY ); ?>[hero_overlay_color]" value="<?php echo esc_attr( $settings['hero_overlay_color'] ); ?>" />
+                                        <p class="description"><?php esc_html_e( 'Default is white (#ffffff) for clean white aesthetic. You can also pick a dark or tinted color.', 'travel-z-visa' ); ?></p>
                                     </td>
                                 </tr>
                                 <tr>
