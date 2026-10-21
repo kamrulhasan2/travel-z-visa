@@ -68,6 +68,14 @@ class TravelZ_Visa_Settings {
             'hero_overlay'         => 'light',
             'hero_overlay_opacity' => '75',
             'hero_overlay_color'   => '#ffffff',
+            'hero_badge_text'      => 'TRAVEL-Z VISA SERVICES',
+            'hero_badge_color'     => '#0ebac5',
+            'hero_badge_bg'        => '#e6f9fa',
+            'hero_title'           => 'Comprehensive Visa Assistance for a Seamless Travel Experience',
+            'hero_title_color'     => '#0f172a',
+            'hero_description'     => 'Navigating the complexities of visa applications can be challenging. Our dedicated Visa Assistance service offers expert guidance and support to ensure a smooth and stress-free process. Whether you are traveling for business, leisure, or educational purposes, we provide tailored assistance for all types of visas.',
+            'hero_desc_color'      => '#475569',
+            'hero_search_placeholder' => 'Search your destination country (e.g. China, Australia, Japan)...',
             'enable_schema'        => '1',
             'flipbook_sound'     => '1',
             'default_view_mode'  => 'flipbook',
@@ -105,6 +113,14 @@ class TravelZ_Visa_Settings {
         $clean['hero_overlay']         = isset( $input['hero_overlay'] ) ? sanitize_key( $input['hero_overlay'] ) : 'light';
         $clean['hero_overlay_opacity'] = isset( $input['hero_overlay_opacity'] ) ? min( 100, max( 0, intval( $input['hero_overlay_opacity'] ) ) ) : 75;
         $clean['hero_overlay_color']   = isset( $input['hero_overlay_color'] ) ? sanitize_hex_color( $input['hero_overlay_color'] ) : '#ffffff';
+        $clean['hero_badge_text']      = isset( $input['hero_badge_text'] ) ? sanitize_text_field( $input['hero_badge_text'] ) : 'TRAVEL-Z VISA SERVICES';
+        $clean['hero_badge_color']     = isset( $input['hero_badge_color'] ) ? sanitize_hex_color( $input['hero_badge_color'] ) : '#0ebac5';
+        $clean['hero_badge_bg']        = isset( $input['hero_badge_bg'] ) ? sanitize_hex_color( $input['hero_badge_bg'] ) : '#e6f9fa';
+        $clean['hero_title']           = isset( $input['hero_title'] ) ? sanitize_text_field( $input['hero_title'] ) : 'Comprehensive Visa Assistance for a Seamless Travel Experience';
+        $clean['hero_title_color']     = isset( $input['hero_title_color'] ) ? sanitize_hex_color( $input['hero_title_color'] ) : '#0f172a';
+        $clean['hero_description']     = isset( $input['hero_description'] ) ? sanitize_textarea_field( $input['hero_description'] ) : '';
+        $clean['hero_desc_color']      = isset( $input['hero_desc_color'] ) ? sanitize_hex_color( $input['hero_desc_color'] ) : '#475569';
+        $clean['hero_search_placeholder'] = isset( $input['hero_search_placeholder'] ) ? sanitize_text_field( $input['hero_search_placeholder'] ) : 'Search your destination country (e.g. China, Australia, Japan)...';
         $clean['enable_schema']        = isset( $input['enable_schema'] ) ? '1' : '0';
         $clean['flipbook_sound']    = isset( $input['flipbook_sound'] ) ? '1' : '0';
         $clean['default_view_mode'] = isset( $input['default_view_mode'] ) ? sanitize_key( $input['default_view_mode'] ) : 'flipbook';
@@ -296,6 +312,61 @@ class TravelZ_Visa_Settings {
                                             <input type="checkbox" name="<?php echo esc_attr( self::OPTION_KEY ); ?>[enable_schema]" value="1" <?php checked( $settings['enable_schema'], '1' ); ?> />
                                             <?php esc_html_e( 'Automatically generate JSON-LD Service, Product, and FAQPage structured schema', 'travel-z-visa' ); ?>
                                         </label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <!-- Card 3: Hero Banner Content & Styling -->
+                        <div class="travelz-admin-card" style="margin-top: 20px;">
+                            <h2><span class="dashicons dashicons-edit" style="vertical-align: middle;"></span> <?php esc_html_e( 'Hero Banner Content & Text Colors', 'travel-z-visa' ); ?></h2>
+                            <p class="description"><?php esc_html_e( 'Customize the banner headings, badge, subtitle description, and individual text colors on the Visa Assistance Hub page.', 'travel-z-visa' ); ?></p>
+                            
+                            <table class="form-table">
+                                <tr>
+                                    <th scope="row"><label for="travelz_hero_badge_text"><?php esc_html_e( 'Hero Badge / Tagline', 'travel-z-visa' ); ?></label></th>
+                                    <td>
+                                        <input type="text" id="travelz_hero_badge_text" name="<?php echo esc_attr( self::OPTION_KEY ); ?>[hero_badge_text]" value="<?php echo esc_attr( $settings['hero_badge_text'] ); ?>" class="regular-text" style="width: 350px;" />
+                                        <div style="display: flex; gap: 24px; align-items: center; margin-top: 10px;">
+                                            <div>
+                                                <label for="travelz_hero_badge_color" style="font-size: 12px; color: #475569; font-weight: 600;"><?php esc_html_e( 'Badge Text Color', 'travel-z-visa' ); ?>:</label><br>
+                                                <input type="color" id="travelz_hero_badge_color" name="<?php echo esc_attr( self::OPTION_KEY ); ?>[hero_badge_color]" value="<?php echo esc_attr( $settings['hero_badge_color'] ); ?>" />
+                                            </div>
+                                            <div>
+                                                <label for="travelz_hero_badge_bg" style="font-size: 12px; color: #475569; font-weight: 600;"><?php esc_html_e( 'Badge Background', 'travel-z-visa' ); ?>:</label><br>
+                                                <input type="color" id="travelz_hero_badge_bg" name="<?php echo esc_attr( self::OPTION_KEY ); ?>[hero_badge_bg]" value="<?php echo esc_attr( $settings['hero_badge_bg'] ); ?>" />
+                                            </div>
+                                        </div>
+                                        <p class="description"><?php esc_html_e( 'The pill-shaped tagline badge above the title (e.g. TRAVEL-Z VISA SERVICES).', 'travel-z-visa' ); ?></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><label for="travelz_hero_title"><?php esc_html_e( 'Hero Main Title', 'travel-z-visa' ); ?></label></th>
+                                    <td>
+                                        <input type="text" id="travelz_hero_title" name="<?php echo esc_attr( self::OPTION_KEY ); ?>[hero_title]" value="<?php echo esc_attr( $settings['hero_title'] ); ?>" class="large-text" />
+                                        <div style="margin-top: 10px;">
+                                            <label for="travelz_hero_title_color" style="font-size: 12px; color: #475569; font-weight: 600;"><?php esc_html_e( 'Title Color', 'travel-z-visa' ); ?>:</label><br>
+                                            <input type="color" id="travelz_hero_title_color" name="<?php echo esc_attr( self::OPTION_KEY ); ?>[hero_title_color]" value="<?php echo esc_attr( $settings['hero_title_color'] ); ?>" />
+                                        </div>
+                                        <p class="description"><?php esc_html_e( 'Main headline of the visa service on the landing page.', 'travel-z-visa' ); ?></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><label for="travelz_hero_description"><?php esc_html_e( 'Hero Description', 'travel-z-visa' ); ?></label></th>
+                                    <td>
+                                        <textarea id="travelz_hero_description" name="<?php echo esc_attr( self::OPTION_KEY ); ?>[hero_description]" rows="4" class="large-text"><?php echo esc_textarea( $settings['hero_description'] ); ?></textarea>
+                                        <div style="margin-top: 10px;">
+                                            <label for="travelz_hero_desc_color" style="font-size: 12px; color: #475569; font-weight: 600;"><?php esc_html_e( 'Description Text Color', 'travel-z-visa' ); ?>:</label><br>
+                                            <input type="color" id="travelz_hero_desc_color" name="<?php echo esc_attr( self::OPTION_KEY ); ?>[hero_desc_color]" value="<?php echo esc_attr( $settings['hero_desc_color'] ); ?>" />
+                                        </div>
+                                        <p class="description"><?php esc_html_e( 'Introductory paragraph below the main title.', 'travel-z-visa' ); ?></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><label for="travelz_hero_search_placeholder"><?php esc_html_e( 'Search Bar Placeholder Hint', 'travel-z-visa' ); ?></label></th>
+                                    <td>
+                                        <input type="text" id="travelz_hero_search_placeholder" name="<?php echo esc_attr( self::OPTION_KEY ); ?>[hero_search_placeholder]" value="<?php echo esc_attr( $settings['hero_search_placeholder'] ); ?>" class="large-text" />
+                                        <p class="description"><?php esc_html_e( 'Placeholder text inside the country search box (Default: Search your destination country (e.g. China, Australia, Japan)...).', 'travel-z-visa' ); ?></p>
                                     </td>
                                 </tr>
                             </table>

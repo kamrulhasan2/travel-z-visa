@@ -113,9 +113,19 @@
             filterCountriesGrid();
         });
 
-        // 5. Hub Search Input Filter
+        // 5. Hub Search Input Filter & Explore Button
         $('#travelz-hub-filter-input').on('input', function() {
             filterCountriesGrid();
+        });
+
+        $('.travelz-hub-search-btn').on('click', function(e) {
+            e.preventDefault();
+            var $grid = $('#travelz-countries-grid');
+            if ($grid.length) {
+                $('html, body').animate({
+                    scrollTop: $grid.offset().top - 90
+                }, 400);
+            }
         });
 
         function filterCountriesGrid() {

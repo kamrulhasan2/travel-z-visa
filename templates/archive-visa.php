@@ -31,6 +31,15 @@ $hero_bg_image        = ! empty( $settings['hero_bg_image'] ) ? $settings['hero_
 $hero_overlay_opacity = isset( $settings['hero_overlay_opacity'] ) ? floatval( $settings['hero_overlay_opacity'] ) : 75;
 $hero_overlay_color   = ! empty( $settings['hero_overlay_color'] ) ? $settings['hero_overlay_color'] : '#ffffff';
 
+$hero_badge_text         = ! empty( $settings['hero_badge_text'] ) ? $settings['hero_badge_text'] : __( 'Travel-Z Visa Services', 'travel-z-visa' );
+$hero_badge_color        = ! empty( $settings['hero_badge_color'] ) ? $settings['hero_badge_color'] : '#0ebac5';
+$hero_badge_bg           = ! empty( $settings['hero_badge_bg'] ) ? $settings['hero_badge_bg'] : '#e6f9fa';
+$hero_title              = ! empty( $settings['hero_title'] ) ? $settings['hero_title'] : __( 'Comprehensive Visa Assistance for a Seamless Travel Experience', 'travel-z-visa' );
+$hero_title_color        = ! empty( $settings['hero_title_color'] ) ? $settings['hero_title_color'] : '#0f172a';
+$hero_description        = ! empty( $settings['hero_description'] ) ? $settings['hero_description'] : __( 'Navigating the complexities of visa applications can be challenging. Our dedicated Visa Assistance service offers expert guidance and support to ensure a smooth and stress-free process. Whether you are traveling for business, leisure, or educational purposes, we provide tailored assistance for all types of visas.', 'travel-z-visa' );
+$hero_desc_color         = ! empty( $settings['hero_desc_color'] ) ? $settings['hero_desc_color'] : '#475569';
+$hero_search_placeholder = ! empty( $settings['hero_search_placeholder'] ) ? $settings['hero_search_placeholder'] : __( 'Search your destination country (e.g. China, Australia, Japan)...', 'travel-z-visa' );
+
 $hero_classes = array( 'travelz-hub-hero' );
 $hero_styles  = array();
 
@@ -75,10 +84,10 @@ if ( ! empty( $hero_bg_image ) ) {
     <div class="<?php echo esc_attr( implode( ' ', $hero_classes ) ); ?>" style="<?php echo esc_attr( implode( ' ', $hero_styles ) ); ?>">
         <div class="travelz-container">
             <div class="travelz-hub-hero-content">
-                <span class="travelz-hub-badge"><?php esc_html_e( 'Travel-Z Visa Services', 'travel-z-visa' ); ?></span>
-                <h1 class="travelz-hub-title"><?php esc_html_e( 'Comprehensive Visa Assistance for a Seamless Travel Experience', 'travel-z-visa' ); ?></h1>
-                <p class="travelz-hub-desc">
-                    <?php esc_html_e( 'Navigating the complexities of visa applications can be challenging. Our dedicated Visa Assistance service offers expert guidance and support to ensure a smooth and stress-free process. Whether you are traveling for business, leisure, or educational purposes, we provide tailored assistance for all types of visas.', 'travel-z-visa' ); ?>
+                <span class="travelz-hub-badge" style="color: <?php echo esc_attr( $hero_badge_color ); ?>; background-color: <?php echo esc_attr( $hero_badge_bg ); ?>;"><?php echo esc_html( $hero_badge_text ); ?></span>
+                <h1 class="travelz-hub-title" style="color: <?php echo esc_attr( $hero_title_color ); ?>;"><?php echo esc_html( $hero_title ); ?></h1>
+                <p class="travelz-hub-desc" style="color: <?php echo esc_attr( $hero_desc_color ); ?>;">
+                    <?php echo nl2br( esc_html( $hero_description ) ); ?>
                 </p>
 
                 <!-- Search Box inside Hero -->
@@ -87,7 +96,7 @@ if ( ! empty( $hero_bg_image ) ) {
                         <span class="travelz-hub-search-icon">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                         </span>
-                        <input type="text" id="travelz-hub-filter-input" class="travelz-hub-search-input" placeholder="<?php esc_attr_e( 'Search your destination country (e.g. China, Australia, Japan)...', 'travel-z-visa' ); ?>" autocomplete="off" />
+                        <input type="text" id="travelz-hub-filter-input" class="travelz-hub-search-input" placeholder="<?php echo esc_attr( $hero_search_placeholder ); ?>" autocomplete="off" />
                         <button type="button" class="travelz-hub-search-btn">
                             <?php esc_html_e( 'Explore', 'travel-z-visa' ); ?>
                         </button>
