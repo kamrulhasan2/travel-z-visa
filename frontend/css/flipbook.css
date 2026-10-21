@@ -31,64 +31,131 @@
     gap: 8px;
 }
 
-.travelz-fb-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    background: #ffffff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    color: #475569;
-    cursor: pointer;
-    transition: all 0.2s;
-    outline: none;
+.travelz-fb-btn,
+button.travelz-fb-btn,
+.travelz-flipbook-toolbar button.travelz-fb-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    border-radius: 7px !important;
+    color: #1e293b !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06) !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    outline: none !important;
+    line-height: 1 !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    box-sizing: border-box !important;
 }
 
-.travelz-fb-btn:hover {
-    background: var(--travelz-primary);
-    border-color: var(--travelz-primary);
-    color: #ffffff;
+.travelz-fb-btn svg,
+button.travelz-fb-btn svg,
+.travelz-flipbook-toolbar button.travelz-fb-btn svg {
+    width: 18px !important;
+    height: 18px !important;
+    stroke: #334155 !important;
+    fill: none !important;
+    stroke-width: 2.3 !important;
+    display: block !important;
+    margin: auto !important;
+    transition: stroke 0.2s ease !important;
 }
 
-.travelz-fb-btn:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-    background: #f1f5f9;
-    border-color: #e2e8f0;
-    color: #94a3b8;
+.travelz-fb-btn:hover,
+button.travelz-fb-btn:hover,
+.travelz-flipbook-toolbar button.travelz-fb-btn:hover {
+    background: var(--travelz-primary, #0ebac5) !important;
+    border-color: var(--travelz-primary, #0ebac5) !important;
+    color: #ffffff !important;
+    box-shadow: 0 3px 8px rgba(14, 186, 197, 0.3) !important;
+    transform: translateY(-1px);
+}
+
+.travelz-fb-btn:hover svg,
+button.travelz-fb-btn:hover svg,
+.travelz-flipbook-toolbar button.travelz-fb-btn:hover svg {
+    stroke: #ffffff !important;
+}
+
+.travelz-fb-btn:disabled,
+button.travelz-fb-btn:disabled,
+.travelz-fb-btn[disabled],
+.travelz-flipbook-toolbar button.travelz-fb-btn:disabled {
+    opacity: 0.35 !important;
+    cursor: not-allowed !important;
+    background: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+    color: #94a3b8 !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+.travelz-fb-btn:disabled svg,
+button.travelz-fb-btn:disabled svg,
+.travelz-flipbook-toolbar button.travelz-fb-btn:disabled svg {
+    stroke: #94a3b8 !important;
 }
 
 .travelz-fb-pages {
-    font-size: 13px;
-    font-weight: 600;
-    color: #334155;
-    background: #ffffff;
-    border: 1px solid #cbd5e1;
-    padding: 6px 12px;
-    border-radius: 6px;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #1e293b !important;
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    padding: 7px 14px !important;
+    border-radius: 7px !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    line-height: 1.2 !important;
 }
 
-.travelz-fb-download-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: #ffffff;
-    border: 1px solid #cbd5e1;
-    padding: 7px 14px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 600;
-    color: #334155;
-    text-decoration: none;
-    transition: all 0.2s;
+.travelz-fb-download-btn,
+a.travelz-fb-download-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    padding: 8px 16px !important;
+    border-radius: 7px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #1e293b !important;
+    text-decoration: none !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+    transition: all 0.2s ease !important;
+    line-height: 1.2 !important;
 }
 
-.travelz-fb-download-btn:hover {
-    background: var(--travelz-accent);
-    border-color: var(--travelz-accent);
-    color: #ffffff;
+.travelz-fb-download-btn svg,
+a.travelz-fb-download-btn svg {
+    stroke: #334155 !important;
+    fill: none !important;
+    transition: stroke 0.2s ease !important;
+}
+
+.travelz-fb-download-btn:hover,
+a.travelz-fb-download-btn:hover {
+    background: var(--travelz-accent, #f26522) !important;
+    border-color: var(--travelz-accent, #f26522) !important;
+    color: #ffffff !important;
+    box-shadow: 0 3px 8px rgba(242, 101, 34, 0.3) !important;
+    transform: translateY(-1px);
+}
+
+.travelz-fb-download-btn:hover svg,
+a.travelz-fb-download-btn:hover svg {
+    stroke: #ffffff !important;
 }
 
 /* Stage & Viewport */
@@ -205,23 +272,42 @@
     }
 }
 
-.travelz-footer-nav-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 14px;
-    background: #f1f5f9;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 600;
-    color: #334155;
-    cursor: pointer;
+.travelz-footer-nav-btn,
+button.travelz-footer-nav-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 8px 16px !important;
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    border-radius: 6px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #1e293b !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+    line-height: 1.2 !important;
 }
 
-.travelz-footer-nav-btn:hover {
-    background: var(--travelz-primary);
-    color: #ffffff;
+.travelz-footer-nav-btn svg,
+button.travelz-footer-nav-btn svg {
+    stroke: #334155 !important;
+    fill: none !important;
+    transition: stroke 0.2s ease !important;
+}
+
+.travelz-footer-nav-btn:hover,
+button.travelz-footer-nav-btn:hover {
+    background: var(--travelz-primary, #0ebac5) !important;
+    border-color: var(--travelz-primary, #0ebac5) !important;
+    color: #ffffff !important;
+    box-shadow: 0 3px 8px rgba(14, 186, 197, 0.28) !important;
+}
+
+.travelz-footer-nav-btn:hover svg,
+button.travelz-footer-nav-btn:hover svg {
+    stroke: #ffffff !important;
 }
 
 /* Fullscreen Mode */
@@ -239,4 +325,8 @@
 .travelz-flipbook-wrapper.is-fullscreen .travelz-flipbook-stage {
     flex: 1;
     min-height: calc(100vh - 60px);
+}
+
+.travelz-flipbook-wrapper.is-fullscreen #travelz-native-pdf-embed {
+    height: calc(100vh - 120px) !important;
 }

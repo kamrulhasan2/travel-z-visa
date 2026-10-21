@@ -80,8 +80,8 @@
         function showFallbackEmbed() {
             $canvasArea.hide();
             $('#travelz-native-pdf-embed').show();
-            $('#travelz-fb-current-page').text('1');
-            $('#travelz-fb-total-pages').text('PDF');
+            $('#travelz-fb-current-page, .travelz-cur-page-num').text('1');
+            $('#travelz-fb-total-pages, .travelz-tot-page-num').text('1');
         }
 
         function renderPage(num) {
@@ -165,28 +165,45 @@
 
         $('#travelz-fb-zoom-in').on('click', function(e) {
             e.preventDefault();
-            if (scale >= 2.0) return;
-            scale += 0.2;
-            queueRenderPage(pageNum);
+            if (pdfDoc) {
+                if (scale >= 2.0) return;
+                scale += 0.2;
+                queueRenderPage(pageNum);
+            } else {
+                var $iframe = $('#travelz-native-pdf-embed');
+                if ($iframe.length) {
+                    $iframe.height(Math.min(1200, $iframe.height() + 120));
+                }
+            }
         });
 
         $('#travelz-fb-zoom-out').on('click', function(e) {
             e.preventDefault();
-            if (scale <= 0.6) return;
-            scale -= 0.2;
-            queueRenderPage(pageNum);
+            if (pdfDoc) {
+                if (scale <= 0.6) return;
+                scale -= 0.2;
+                queueRenderPage(pageNum);
+            } else {
+                var $iframe = $('#travelz-native-pdf-embed');
+                if ($iframe.length) {
+                    $iframe.height(Math.max(450, $iframe.height() - 120));
+                }
+            }
         });
 
         // Fullscreen toggle
         $('#travelz-fb-fullscreen').on('click', function(e) {
             e.preventDefault();
             $wrapper.toggleClass('is-fullscreen');
-            if ($wrapper.hasClass('is-fullscreen')) {
+            var isFull = $wrapper.hasClass('is-fullscreen');
+            if (isFull) {
                 $('body').css('overflow', 'hidden');
                 scale = 1.3;
+                $('#travelz-native-pdf-embed').css('height', 'calc(100vh - 120px)');
             } else {
                 $('body').css('overflow', '');
                 scale = 1.0;
+                $('#travelz-native-pdf-embed').css('height', '600px');
             }
             if (pdfDoc) {
                 queueRenderPage(pageNum);
