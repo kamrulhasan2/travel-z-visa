@@ -18,6 +18,43 @@ class TravelZ_Visa_Frontend {
         add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_assets' ) );
         add_filter( 'template_include', array( __CLASS__, 'template_loader' ) );
         add_action( 'template_redirect', array( __CLASS__, 'maybe_redirect_old_pages' ) );
+
+        // Theme compatibility: disable sidebar and force full-width container on Astra
+        add_filter( 'astra_page_layout', array( __CLASS__, 'filter_astra_sidebar' ) );
+        add_filter( 'astra_get_content_layout', array( __CLASS__, 'filter_astra_content_layout' ) );
+
+        // Inject body class for CSS scoping & reliable centering
+        add_filter( 'body_class', array( __CLASS__, 'filter_body_classes' ) );
+    }
+
+    /**
+     * Disable Astra sidebar on Visa archive and single pages.
+     */
+    public static function filter_astra_sidebar( $layout ) {
+        if ( is_singular( TravelZ_Visa_Post_Type::POST_TYPE ) || is_post_type_archive( TravelZ_Visa_Post_Type::POST_TYPE ) || is_tax( TravelZ_Visa_Post_Type::TAXONOMY ) ) {
+            return 'no-sidebar';
+        }
+        return $layout;
+    }
+
+    /**
+     * Force Astra plain/full-width container on Visa archive and single pages.
+     */
+    public static function filter_astra_content_layout( $layout ) {
+        if ( is_singular( TravelZ_Visa_Post_Type::POST_TYPE ) || is_post_type_archive( TravelZ_Visa_Post_Type::POST_TYPE ) || is_tax( TravelZ_Visa_Post_Type::TAXONOMY ) ) {
+            return 'plain-container';
+        }
+        return $layout;
+    }
+
+    /**
+     * Add custom body class for reliable layout styling.
+     */
+    public static function filter_body_classes( $classes ) {
+        if ( is_singular( TravelZ_Visa_Post_Type::POST_TYPE ) || is_post_type_archive( TravelZ_Visa_Post_Type::POST_TYPE ) || is_tax( TravelZ_Visa_Post_Type::TAXONOMY ) ) {
+            $classes[] = 'travelz-visa-active-page';
+        }
+        return $classes;
     }
 
     /**

@@ -16,20 +16,182 @@
     --travelz-radius: 10px;
 }
 
+/* =========================================================
+   Global Layout, Full-Width & Center Alignment Engine
+   ========================================================= */
+
+/* Ensure theme site-content and outer wrappers stretch to 100% full width */
+body.travelz-visa-active-page #content,
+body.travelz-visa-active-page .site-content,
+body.post-type-archive-travelz_visa #content,
+body.post-type-archive-travelz_visa .site-content,
+body.single-travelz_visa #content,
+body.single-travelz_visa .site-content,
+body.tax-visa_region #content,
+body.tax-visa_region .site-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+    float: none !important;
+    display: block !important;
+}
+
+/* Force flex containers (Astra, OceanWP, etc.) to behave as block and stretch 100% */
+body.travelz-visa-active-page .site-content > .ast-container,
+body.travelz-visa-active-page .site-content .ast-container,
+body.post-type-archive-travelz_visa .site-content > .ast-container,
+body.post-type-archive-travelz_visa .site-content .ast-container,
+body.single-travelz_visa .site-content > .ast-container,
+body.single-travelz_visa .site-content .ast-container,
+body.tax-visa_region .site-content > .ast-container,
+body.tax-visa_region .site-content .ast-container,
+.site-content .ast-container:has(> #primary.travelz-primary-wrap),
+.site-content .ast-container:has(> .travelz-visa-hub-page),
+.site-content .ast-container:has(> .travelz-visa-single-page) {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* Hide empty theme sidebars if any */
+body.travelz-visa-active-page #secondary,
+body.post-type-archive-travelz_visa #secondary,
+body.single-travelz_visa #secondary,
+body.tax-visa_region #secondary {
+    display: none !important;
+}
+
+/* Standard WordPress Content Area Wrappers */
+#primary.travelz-primary-wrap,
+.travelz-primary-wrap,
+.travelz-main-wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+    flex: 1 1 100% !important;
+    float: none !important;
+    display: block !important;
+    box-sizing: border-box !important;
+}
+
+/* Top-level Plugin Page Wrappers - Always 100% full-width */
+.travelz-visa-hub-page,
+.travelz-visa-single-page {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 1 1 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 0 0 70px 0 !important;
+    display: block !important;
+    box-sizing: border-box !important;
+    clear: both !important;
+    background-color: #fbfcfd;
+}
+
+/* Edge-to-Edge Hero Banners */
+.travelz-hub-hero,
+.travelz-single-hero {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+    display: block !important;
+}
+
+/* Universal Center-Aligned Content Container */
 .travelz-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    box-sizing: border-box !important;
+    display: block !important;
+}
+
+/* Ensure inner hero contents are centered */
+.travelz-hub-hero-content {
+    max-width: 800px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center;
+}
+
+.travelz-hub-search-bar {
+    max-width: 640px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.travelz-region-filters {
+    display: flex;
+    justify-content: center !important;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 35px;
+    width: 100%;
+}
+
+.travelz-countries-grid {
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.travelz-help-banner {
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+}
+
+.travelz-top-switcher-container {
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+}
+
+.travelz-detail-grid {
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.travelz-checklist-section,
+.travelz-faqs-section,
+.travelz-post-content-card {
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
 }
 
 /* =========================================================
    1. Single Visa Page Hero & Header
    ========================================================= */
-.travelz-visa-single-page {
-    background-color: #fbfcfd;
-    padding-bottom: 60px;
-}
-
 .travelz-single-hero {
     background: linear-gradient(135deg, rgba(14, 186, 197, 0.08) 0%, rgba(242, 101, 34, 0.05) 100%), #ffffff;
     border-bottom: 1px solid var(--travelz-border);

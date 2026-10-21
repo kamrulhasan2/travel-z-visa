@@ -9,7 +9,12 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-get_header();
+global $travelz_is_shortcode;
+$travelz_is_standalone = empty( $travelz_is_shortcode );
+
+if ( $travelz_is_standalone ) {
+    get_header();
+}
 
 // Fetch all visas
 $visas = get_posts( array(
@@ -77,6 +82,11 @@ if ( ! empty( $hero_bg_image ) ) {
     }
 }
 ?>
+
+<?php if ( $travelz_is_standalone ) : ?>
+<div id="primary" class="content-area primary travelz-primary-wrap">
+    <main id="main" class="site-main travelz-main-wrap">
+<?php endif; ?>
 
 <div class="travelz-visa-hub-page">
     
@@ -179,10 +189,12 @@ if ( ! empty( $hero_bg_image ) ) {
                             </div>
 
                             <div class="travelz-card-footer">
-                                <div class="travelz-card-price-info">
+                                <div class="travelz-card-price">
                                     <?php if ( $starting_fee ) : ?>
-                                        <span class="travelz-price-label"><?php esc_html_e( 'Fee Starts At', 'travel-z-visa' ); ?></span>
+                                        <span class="travelz-price-label"><?php esc_html_e( 'Starts from', 'travel-z-visa' ); ?></span>
                                         <span class="travelz-price-val"><?php echo esc_html( $starting_fee ); ?></span>
+                                    <?php else : ?>
+                                        <span class="travelz-price-val"><?php esc_html_e( 'Consult Us', 'travel-z-visa' ); ?></span>
                                     <?php endif; ?>
                                 </div>
                                 <a href="<?php echo esc_url( $permalink ); ?>" class="travelz-card-view-btn">
@@ -224,5 +236,12 @@ if ( ! empty( $hero_bg_image ) ) {
     </div>
 </div>
 
+<?php if ( $travelz_is_standalone ) : ?>
+    </main>
+</div>
+<?php endif; ?>
+
 <?php
-get_footer();
+if ( $travelz_is_standalone ) {
+    get_footer();
+}
