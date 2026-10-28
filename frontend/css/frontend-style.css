@@ -664,58 +664,142 @@ body.tax-visa_region #secondary {
 }
 
 .travelz-accordion-item {
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
     overflow: hidden;
-    transition: border-color 0.2s;
+    background: #ffffff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .travelz-accordion-item.open {
-    border-color: var(--travelz-primary);
+    border-color: var(--travelz-primary, #0ebac5);
+    box-shadow: 0 4px 14px rgba(14, 186, 197, 0.08);
 }
 
-.travelz-accordion-header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 20px;
-    background: #ffffff;
-    border: none;
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--travelz-text-dark);
-    text-align: left;
-    cursor: pointer;
-    transition: background 0.2s;
+/* Accordion Header - Neutral / Base */
+button.travelz-accordion-header,
+.travelz-accordion-header,
+.site-main button.travelz-accordion-header,
+.entry-content button.travelz-accordion-header {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 16px 20px !important;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    border: none !important;
+    border-radius: 0 !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: #1e293b !important;
+    text-align: left !important;
+    text-transform: none !important;
+    cursor: pointer !important;
+    box-shadow: none !important;
+    outline: none !important;
+    margin: 0 !important;
+    line-height: 1.4 !important;
+    transition: background-color 0.2s ease, color 0.2s ease !important;
 }
 
-.travelz-accordion-header:hover {
-    background: #f8fafc;
+button.travelz-accordion-header .travelz-faq-title,
+.travelz-accordion-header .travelz-faq-title {
+    color: #1e293b !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    transition: color 0.2s ease !important;
 }
 
+/* Accordion Header - Hover & Focus State */
+button.travelz-accordion-header:hover,
+.travelz-accordion-header:hover,
+.site-main button.travelz-accordion-header:hover,
+.entry-content button.travelz-accordion-header:hover,
+button.travelz-accordion-header:focus,
+.travelz-accordion-header:focus {
+    background: #f8fafc !important;
+    background-color: #f8fafc !important;
+    color: var(--travelz-primary, #0ebac5) !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+button.travelz-accordion-header:hover .travelz-faq-title,
+.travelz-accordion-header:hover .travelz-faq-title,
+button.travelz-accordion-header:focus .travelz-faq-title,
+.travelz-accordion-header:focus .travelz-faq-title {
+    color: var(--travelz-primary, #0ebac5) !important;
+}
+
+/* Accordion Header - Open State */
+.travelz-accordion-item.open button.travelz-accordion-header,
+.travelz-accordion-item.open .travelz-accordion-header {
+    background: #f0fdfa !important;
+    background-color: #f0fdfa !important;
+    border-bottom: 1px solid #ccfbf1 !important;
+}
+
+.travelz-accordion-item.open button.travelz-accordion-header .travelz-faq-title,
+.travelz-accordion-item.open .travelz-accordion-header .travelz-faq-title {
+    color: #0f766e !important;
+}
+
+.travelz-accordion-item.open button.travelz-accordion-header:hover,
+.travelz-accordion-item.open .travelz-accordion-header:hover {
+    background: #e6fffa !important;
+    background-color: #e6fffa !important;
+}
+
+.travelz-accordion-item.open button.travelz-accordion-header:hover .travelz-faq-title,
+.travelz-accordion-item.open .travelz-accordion-header:hover .travelz-faq-title {
+    color: #0f766e !important;
+}
+
+/* Arrow icon */
 .travelz-accordion-arrow {
-    display: flex;
-    align-items: center;
-    transition: transform 0.25s ease;
-    color: #94a3b8;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: transform 0.25s ease, color 0.2s ease !important;
+    color: #94a3b8 !important;
+    flex-shrink: 0 !important;
+    margin-left: 12px !important;
+}
+
+.travelz-accordion-arrow svg {
+    stroke: currentColor !important;
+    width: 18px !important;
+    height: 18px !important;
+    display: block !important;
+}
+
+button.travelz-accordion-header:hover .travelz-accordion-arrow,
+.travelz-accordion-header:hover .travelz-accordion-arrow {
+    color: var(--travelz-primary, #0ebac5) !important;
 }
 
 .travelz-accordion-item.open .travelz-accordion-arrow {
-    transform: rotate(180deg);
-    color: var(--travelz-primary);
+    transform: rotate(180deg) !important;
+    color: #0f766e !important;
 }
 
 .travelz-accordion-body {
-    padding: 0 20px 16px;
-    background: #ffffff;
-    color: #475569;
-    font-size: 14px;
-    line-height: 1.6;
+    padding: 16px 20px 20px !important;
+    background: #ffffff !important;
+    color: #334155 !important;
+    font-size: 14.5px !important;
+    line-height: 1.65 !important;
 }
 
 .travelz-accordion-content p {
-    margin: 0;
+    margin: 0 !important;
+    color: #334155 !important;
+}
+
+.travelz-accordion-content p + p {
+    margin-top: 10px !important;
 }
 
 /* =========================================================
