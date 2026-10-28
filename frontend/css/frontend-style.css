@@ -789,6 +789,10 @@ body.tax-visa_region #secondary {
 .travelz-hub-search-wrapper {
     position: relative;
     z-index: 10;
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
 .travelz-hub-search-bar {
@@ -799,9 +803,12 @@ body.tax-visa_region #secondary {
     border-radius: 50px;
     padding: 6px 8px 6px 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.05);
+    width: 100%;
     max-width: 640px;
     margin: 0 auto;
     position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .travelz-hub-search-icon {
@@ -817,16 +824,19 @@ body.tax-visa_region #secondary {
     border: none !important;
     outline: none !important;
     box-shadow: none !important;
-    background: #ffffff !important;
+    background: transparent !important;
     color: #0f172a !important;
     -webkit-text-fill-color: #0f172a !important;
     font-size: 15px !important;
     font-weight: 500 !important;
-    flex: 1;
+    flex: 1 1 0% !important;
+    min-width: 0 !important;
+    width: 100% !important;
     padding: 8px 10px !important;
     margin: 0 !important;
     line-height: normal !important;
     height: auto !important;
+    box-sizing: border-box !important;
 }
 
 /* Crisp, high-contrast placeholder (removes washed-out/foggy look) */
@@ -837,6 +847,9 @@ body.tax-visa_region #secondary {
     font-weight: 500 !important;
     font-size: 14.5px !important;
     -webkit-text-fill-color: #334155 !important;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .travelz-hub-search-input::-webkit-input-placeholder,
@@ -846,6 +859,9 @@ body.tax-visa_region #secondary {
     font-weight: 500 !important;
     font-size: 14.5px !important;
     -webkit-text-fill-color: #334155 !important;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .travelz-hub-search-input::-moz-placeholder,
@@ -854,6 +870,9 @@ body.tax-visa_region #secondary {
     opacity: 1 !important;
     font-weight: 500 !important;
     font-size: 14.5px !important;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .travelz-hub-search-btn {
@@ -867,6 +886,7 @@ body.tax-visa_region #secondary {
     cursor: pointer;
     transition: background 0.2s ease, transform 0.15s ease;
     flex-shrink: 0;
+    white-space: nowrap;
     box-shadow: 0 4px 12px rgba(14, 186, 197, 0.3);
 }
 
@@ -1108,4 +1128,125 @@ body.tax-visa_region #secondary {
 
 .travelz-help-btn-call:hover {
     background: rgba(255,255,255,0.2);
+}
+
+
+/* =========================================================
+   Mobile Responsiveness for Hero Search & Containers
+   ========================================================= */
+@media (max-width: 768px) {
+    .travelz-container {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+    .travelz-hub-hero-content {
+        padding: 0 4px;
+    }
+}
+
+@media (max-width: 640px) {
+    .travelz-container {
+        padding-left: 14px !important;
+        padding-right: 14px !important;
+    }
+
+    .travelz-hub-search-wrapper {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .travelz-hub-search-bar {
+        padding: 4px 5px 4px 14px !important;
+        border-width: 1.5px !important;
+        border-radius: 40px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .travelz-hub-search-icon {
+        margin-right: 6px !important;
+    }
+
+    .travelz-hub-search-icon svg {
+        width: 18px !important;
+        height: 18px !important;
+    }
+
+    .travelz-hub-search-input,
+    .travelz-hub-search-bar input.travelz-hub-search-input {
+        font-size: 13.5px !important;
+        padding: 7px 6px !important;
+        min-width: 0 !important;
+    }
+
+    .travelz-hub-search-input::placeholder,
+    .travelz-hub-search-bar input.travelz-hub-search-input::placeholder {
+        font-size: 12.5px !important;
+    }
+
+    .travelz-hub-search-btn {
+        padding: 8px 18px !important;
+        font-size: 13px !important;
+        border-radius: 30px !important;
+        box-shadow: 0 2px 8px rgba(14, 186, 197, 0.25) !important;
+    }
+
+    /* Country Switcher (Single Visa) */
+    .travelz-switcher-inner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .travelz-select-wrapper,
+    .travelz-country-select,
+    .travelz-instant-search-wrap {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    .travelz-quick-search-input {
+        min-width: 0 !important;
+    }
+}
+
+@media (max-width: 380px) {
+    .travelz-container {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    .travelz-hub-search-bar {
+        padding: 3px 4px 3px 10px !important;
+        border-radius: 35px !important;
+    }
+
+    .travelz-hub-search-icon {
+        margin-right: 4px !important;
+    }
+
+    .travelz-hub-search-icon svg {
+        width: 16px !important;
+        height: 16px !important;
+    }
+
+    .travelz-hub-search-input,
+    .travelz-hub-search-bar input.travelz-hub-search-input {
+        font-size: 12.5px !important;
+        padding: 6px 4px !important;
+        min-width: 0 !important;
+    }
+
+    .travelz-hub-search-input::placeholder,
+    .travelz-hub-search-bar input.travelz-hub-search-input::placeholder {
+        font-size: 11.5px !important;
+    }
+
+    .travelz-hub-search-btn {
+        padding: 7px 12px !important;
+        font-size: 12px !important;
+    }
 }
