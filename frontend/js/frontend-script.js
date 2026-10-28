@@ -109,6 +109,18 @@
             $('.travelz-region-btn').removeClass('active');
             $(this).addClass('active');
 
+            // Smoothly center the active pill in horizontal scroll on mobile
+            var container = $(this).closest('.travelz-region-filters')[0];
+            if (container && container.scrollWidth > container.clientWidth) {
+                var btnLeft = this.offsetLeft;
+                var btnWidth = this.offsetWidth;
+                var containerWidth = container.clientWidth;
+                container.scrollTo({
+                    left: btnLeft - (containerWidth / 2) + (btnWidth / 2),
+                    behavior: 'smooth'
+                });
+            }
+
             var region = $(this).data('region');
             filterCountriesGrid();
         });

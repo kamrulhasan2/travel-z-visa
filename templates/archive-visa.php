@@ -122,11 +122,13 @@ if ( ! empty( $hero_bg_image ) ) {
         <?php if ( ! empty( $regions ) && ! is_wp_error( $regions ) ) : ?>
             <div class="travelz-region-filters">
                 <button type="button" class="travelz-region-btn active" data-region="all">
-                    <?php esc_html_e( 'All Destinations', 'travel-z-visa' ); ?> (<?php echo count( $visas ); ?>)
+                    <span class="travelz-pill-text"><?php esc_html_e( 'All Destinations', 'travel-z-visa' ); ?></span>
+                    <span class="travelz-pill-count"><?php echo count( $visas ); ?></span>
                 </button>
                 <?php foreach ( $regions as $reg ) : ?>
                     <button type="button" class="travelz-region-btn" data-region="<?php echo esc_attr( $reg->slug ); ?>">
-                        <?php echo esc_html( $reg->name ); ?> (<?php echo esc_html( $reg->count ); ?>)
+                        <span class="travelz-pill-text"><?php echo esc_html( $reg->name ); ?></span>
+                        <span class="travelz-pill-count"><?php echo esc_html( $reg->count ); ?></span>
                     </button>
                 <?php endforeach; ?>
             </div>

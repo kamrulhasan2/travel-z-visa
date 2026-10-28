@@ -899,25 +899,59 @@ body.tax-visa_region #secondary {
 .travelz-region-filters {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 35px;
+    padding: 4px 0;
 }
 
 .travelz-region-btn {
-    padding: 8px 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
     background: #ffffff;
-    border: 1px solid var(--travelz-border);
+    border: 1.5px solid #e2e8f0;
     border-radius: 50px;
     font-size: 14px;
     font-weight: 600;
-    color: #475569;
+    color: #334155;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    user-select: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.travelz-pill-text {
+    display: inline-block;
+    line-height: 1.2;
+}
+
+.travelz-pill-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1px 7px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    font-weight: 700;
+    background: #f1f5f9;
+    color: #64748b;
+    line-height: 1.3;
+    transition: all 0.2s ease;
 }
 
 .travelz-region-btn:hover {
     border-color: var(--travelz-primary);
+    color: var(--travelz-primary);
+    background: #f8fafc;
+    box-shadow: 0 2px 6px rgba(14, 186, 197, 0.15);
+}
+
+.travelz-region-btn:hover .travelz-pill-count {
+    background: rgba(14, 186, 197, 0.15);
     color: var(--travelz-primary);
 }
 
@@ -925,7 +959,12 @@ body.tax-visa_region #secondary {
     background: var(--travelz-primary);
     border-color: var(--travelz-primary);
     color: #ffffff;
-    box-shadow: 0 4px 12px rgba(14, 186, 197, 0.25);
+    box-shadow: 0 4px 14px rgba(14, 186, 197, 0.3);
+}
+
+.travelz-region-btn.active .travelz-pill-count {
+    background: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
 }
 
 /* Country Cards Grid */
@@ -1143,6 +1182,42 @@ body.tax-visa_region #secondary {
     .travelz-hub-hero-content {
         padding: 0 4px;
     }
+
+    /* Mobile Region Filters: Modern Horizontal Swipe Carousel */
+    .travelz-region-filters {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        gap: 8px !important;
+        padding: 4px 16px 14px 16px !important;
+        margin-left: -16px !important;
+        margin-right: -16px !important;
+        width: calc(100% + 32px) !important;
+        margin-bottom: 24px !important;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        scroll-snap-type: x proximity;
+    }
+
+    .travelz-region-filters::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .travelz-region-btn {
+        flex: 0 0 auto !important;
+        padding: 6px 13px !important;
+        font-size: 13px !important;
+        gap: 6px !important;
+        scroll-snap-align: start;
+    }
+
+    .travelz-pill-count {
+        font-size: 11px !important;
+        padding: 1px 6px !important;
+    }
 }
 
 @media (max-width: 640px) {
@@ -1248,5 +1323,26 @@ body.tax-visa_region #secondary {
     .travelz-hub-search-btn {
         padding: 7px 12px !important;
         font-size: 12px !important;
+    }
+
+    .travelz-region-filters {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+        margin-left: -10px !important;
+        margin-right: -10px !important;
+        width: calc(100% + 20px) !important;
+        gap: 6px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .travelz-region-btn {
+        padding: 5px 10px !important;
+        font-size: 12px !important;
+        gap: 5px !important;
+    }
+
+    .travelz-pill-count {
+        font-size: 10.5px !important;
+        padding: 1px 5px !important;
     }
 }
